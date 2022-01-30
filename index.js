@@ -38,7 +38,7 @@ const fs = require('fs')
 const hx = require('hxz-api')
 const axios = require("axios")
 const yts = require('yt-search')
-const crypto = require('crypto')  
+const crypto = require('crypto')  
 const request = require('request')
 const ffmpeg = require('fluent-ffmpeg')
 const speed = require('performance-now')
@@ -89,26 +89,26 @@ var seconds = Math.floor(seconds % 60);
 return `${pad(hours)}JAM ${pad(minutes)}MENIT ${pad(seconds)}DETIK`
 
 }
-const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
- if(time2 < "23:59:00"){
+const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
+if(time2 < "23:59:00"){
 var ucapanWaktu = 'Good night??'
- }
- if(time2 < "19:00:00"){
+}
+if(time2 < "19:00:00"){
 var ucapanWaktu = 'Good afternoon'
- }
- if(time2 < "18:00:00"){
+}
+if(time2 < "18:00:00"){
 var ucapanWaktu = 'Good afternoon'
- }
- if(time2 < "15:00:00"){
+}
+if(time2 < "15:00:00"){
 var ucapanWaktu = 'Good afternoon'
- }
- if(time2 < "11:00:00"){
+}
+if(time2 < "11:00:00"){
 var ucapanWaktu = 'Good morning'
- }
- if(time2 < "05:00:00"){
+}
+if(time2 < "05:00:00"){
 var ucapanWaktu = 'Good Night'
- } 
-  
+} 
+  
 //=================( PEMBATAS )=================//
 
 module.exports = Lexxy = async (Lexxy, mek) => {
@@ -130,7 +130,7 @@ const wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
 const wit = moment.tz('Asia/Jayapura').format("HH:mm:ss")
 const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
-const prefix = /^[簞?Ａ繩?繞??Ｔ瞼簧??=|~!#$%^&.?/\\穢^z+*@,;]/.test(cmd) ? cmd.match(/^[簞?Ａ繩?繞??Ｔ瞼簧??=|~!#$%^&.?/\\穢^z+*,;]/gi) : '-'          	
+const prefix = /^[簞?Ａ€繩?繞??Ｔ瞼簧??=|~!#$%^&.?/\\穢^z+*@,;]/.test(cmd) ? cmd.match(/^[簞?Ａ€繩?繞??Ｔ瞼簧??=|~!#$%^&.?/\\穢^z+*,;]/gi) : '-'          
 body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message[type].caption.startsWith(prefix) ? mek.message[type].caption : (type == 'videoMessage') && mek.message[type].caption.startsWith(prefix) ? mek.message[type].caption : (type == 'extendedTextMessage') && mek.message[type].text.startsWith(prefix) ? mek.message[type].text : (type == 'listResponseMessage') && mek.message[type].singleSelectReply.selectedRowId ? mek.message[type].singleSelectReply.selectedRowId : (type == 'buttonsResponseMessage') && mek.message[type].selectedButtonId ? mek.message[type].selectedButtonId : ''
 budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
 const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
@@ -153,7 +153,7 @@ const groupDesc = isGroup ? groupMetadata.desc : ''
 const groupOwner = isGroup ? groupMetadata.owner : ''
 const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
-const isGroupAdmins = groupAdmins.includes(sender) || false        
+const isGroupAdmins = groupAdmins.includes(sender) || false        
 const isAntilink = isGroup ? antilink.includes(from) : false
 const conts = mek.key.fromMe ? Lexxy.user.jid : Lexxy.contacts[sender] || { notify: jid.replace(/@.+/, '') }
 const pushname = mek.key.fromMe ? Lexxy.user.name : conts.notify || conts.vname || conts.name || '-'
@@ -163,7 +163,7 @@ const isPremier = prem.includes(sender)
 const totalChat = await Lexxy.chats.all()
 const groups = Lexxy.chats.array.filter(v => v.jid.endsWith('g.us'))
 const privat = Lexxy.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
-const cekcek = randomNomor(100)  
+const cekcek = randomNomor(100)  
 
 //=================( MESS ONLY )=================//
 
@@ -198,14 +198,14 @@ Lexxy.sendMessage(from, teks, text, {quoted: mek})
 }
 const fakethumb = (teks, yes) => {
 Lexxy.sendMessage(from, teks, image, {thumbnail:fs.readFileSync('./gambar/fake.jpg'),quoted:mek,caption:yes})
-}      
+}      
 const sendMess = (hehe, teks) => {
 Lexxy.sendMessage(hehe, teks, text)
 }
 
 const mentions = (teks, memberr, id) => {
 (id == null || id == undefined || id == false) ? Lexxy.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : Lexxy.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
-}            
+}            
 if (budy.includes("https://chat.whatsapp.com/")) {
 if (!isGroup) return
 if (!isAntilink) return
@@ -215,7 +215,7 @@ reply(` *「 GROUP LINK DETECTOR 」*\nKamu mengirimkan link grup chat, maaf kam
 setTimeout(() => {
 Lexxy.groupRemove(from, [kic]).catch((e) => { reply(`BOT HARUS JADI ADMIN`) })
 }, 0)
-}          
+}          
 //=================( FAKE )=================//
 
 //FAKE VN
@@ -255,8 +255,8 @@ from,
 MessageType.contact,
 { quoted: mek }
 );
-};            
-    
+};            
+    
 //=================( BUTTON )=================//
 const sendButMessage = (id, text1, desc1, but = [], options = {}) => {
 const buttonMessage = {
@@ -295,7 +295,7 @@ quoted: mek,
 async function sendButLoc(id, text1, desc1, gam1, but = [], options = {}) {
 let buttonMessages = { locationMessage: { jpegThumbnail: gam1 }, contentText: text1, footerText: desc1, buttons: but, headerType: 6 }
 return Lexxy.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
-}            
+}            
 
 //=================( STICKER )=================//
 
@@ -364,7 +364,7 @@ console.log(e)
 })
 })
 })
-}            
+}            
 const sendMediaURL = async(to, url, text="", mids=[]) =>{
 if(mids.length > 0){
 text = normalizeMention(to, text, mids)
@@ -395,12 +395,12 @@ fs.unlinkSync(filename)
 }
 
 //=================( USER )=================//
-   
+   
 if (isCmd && !isUser){
 pendaftar.push(sender)
 fs.writeFileSync('./database/pendaftar.json', JSON.stringify(pendaftar, null, 2))
 }
-        
+        
 //=================( CONECTION )=================//
 
 colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
@@ -575,7 +575,7 @@ case 'donasi':
 dns =`${(ind.donasi())}`
 reply(dns)
 break
-case 'hidetag':              
+case 'hidetag':              
 if (!isGroup) return sticGroup(from)
 if (!isGroupAdmins) return sticAdmin(from)
 var value = body.slice(9)
@@ -603,7 +603,7 @@ teks = ''
 for (let _ of mentioned) {
 teks += `*jabatan kamu di copot*🏃 :\n`
 teks += `@_.split('@')[0]`
-	}
+}
 mentions(teks, mentioned, true)
 Lexxy.groupDemoteAdmin(from, mentioned)
 } else {
@@ -729,7 +729,7 @@ break;
 case 'serti1':
 case 'serti2':
 case 'serti3':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0) return reply('Text Nya Mana Tod?')
 txtt = args.join (" ")
@@ -739,7 +739,7 @@ Lexxy.sendMessage(from, buff, image, { quoted: mek, caption: 'Nih Bro Hasil nya'
 break
 case 'rem':
 case 'kaneki':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply(`Textnya mana kak? Contoh\n${prefix + command} Lexxy`)
 bo = args.join(" ")
@@ -750,7 +750,7 @@ break
 case 'sadboy':
 case 'lolimaker':
 case 'girlneko':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply(`Textnya mana kak? Contoh\n${prefix + command} Lexxy OFC`)
 txt1 = args[0]
@@ -774,7 +774,7 @@ fs.unlinkSync(ran)
 })
 break
 case 'searchgrup':
-if (!isPremier)return reply(mess.premier)
+
 if (args.length < 1) return reply(`Nama Group? Contohnya\n${prefix + command} jb`)
 hx.linkwa(q)
 sticWait(from)
@@ -787,16 +787,16 @@ reply(res)
 });
 break
 case 'imgsearch':
-if (!isPremier)return reply(mess.premier)
+
 if (args.length < 1) return reply('Tolong masukan query!')
 let im = await hx.chara(q)
 sticWait(from)
 let acak = im[Math.floor(Math.random() * im.length)]
 let li = await getBuffer(acak)
-await Lexxy.sendMessage(from,li,image,{quoted: mek})           
+await Lexxy.sendMessage(from,li,image,{quoted: mek})           
 break
 case 'ytsearch':
-if (!isPremier)return reply(mess.premier)
+
 if (args.length < 1) return reply('Tolong masukan query!')
 var srch = args.join('');
 sticWait(from)
@@ -856,7 +856,7 @@ reply('Sukses')
 } else {
 reply(`Kirim gambar dengan caption ${prefix}setfake`)
 }
-break	
+break
 case 'setthumb':
 if (!isOwner) return sticOwner(from)
 if ((isMedia && !mek.message.videoMessage || isQuotedImage || isQuotedSticker) && args.length == 0) {
@@ -867,10 +867,10 @@ reply('Sukses')
 } else {
 reply(`Kirim gambar dengan caption ${prefix}setthumb`)
 }
-break	
+break
 case 'memeindo':
 case 'darkjokes':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 sticWait(from)
 zks = await fetchJson(`https://api.zeks.me/api/${command}?apikey=${zeksApi}`)
@@ -891,7 +891,7 @@ case 'text3d':
 case 'leavest':
 case 'tlight':
 case 'nulis':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Text nya mana?')
 bp = args.join(" ")
@@ -914,16 +914,16 @@ case 'tes':
 if (isBanned)return sticBanned(from)
 fakeText('*STATUS BOT : ONLINE*')
 break
-case 'cerpen':  
+case 'cerpen':  
 if (isBanned)return sticBanned(from)
-anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/cerpen`)     
+anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/cerpen`)     
 anu1 = `➻ *JUDUL* : ${anu.result.title}\n`
 anu1 += `➻ *PENGARANG* : ${anu.result.pengarang}\n` 
 anu1 += `➻ *KATEGORI* : ${anu.result.kategori}\n`
 anu1 += `➻ *CERPEN* : ${anu.result.cerpen}\n`
 reply(anu1)
-break            
-case 'tongue':  
+break            
+case 'tongue':  
 if (isBanned)return sticBanned(from)
 anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/tongue_twister`)
 anu1 = `➻ *NIHH* : ${anu.result}`
@@ -935,9 +935,9 @@ anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/random_pantun`)
 anu1 = `➻ *PANTUN* : \n${anu.result}\n` 
 reply(anu1)
 break 
-case 'namaninja':  
+case 'namaninja':  
 if (isBanned)return sticBanned(from)
-if (args.length < 1) return reply(`[❗] Example :\n*${prefix}${command} Naruto*`)  
+if (args.length < 1) return reply(`[❗] Example :\n*${prefix}${command} Naruto*`)  
 F = body.slice(11)
 anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ninja_name?name=${F}`)
 anu1 = `➻ *NAMA* : ${anu.your_name}\n`
@@ -1007,7 +1007,7 @@ fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
 reply(`*@${prmm}*\n_Berhasil Delete User Premium ✓_`)
 break
 case 'mediafire':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 md = fs.readFileSync('./gambar/logo/mdfire.jpg')
 if (args.length < 1) return reply('Link Nya Mana? ')
@@ -1087,7 +1087,7 @@ case 'trap':
 case 'megumin':
 case 'awoo':
 case 'shinobu':
-if (!isPremier)return reply(mess.premier)
+
 sticWait(from)
 anu = await fetchJson(`https://waifu.pics/api/nsfw/${command}`)
 buffer = await getBuffer(anu.url)
@@ -1156,7 +1156,7 @@ reply(`Please send a picture or reply to an image with the caption ${prefix}stic
 }
 break
 case 'ytplay':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Judul nya Mana Kak?')
 bo = args.join(" ")
@@ -1173,7 +1173,7 @@ but = [
 sendButLoc(from, yt1, yt2, ytg, but)
 break
 case 'ply4':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 bo = args.join(" ")
 sticLoad(from)
@@ -1182,7 +1182,7 @@ p4 = await getBuffer(get.url_video)
 Lexxy.sendMessage(from, p4, video)
 break
 case 'ply3':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 bo = args.join(" ")
 sticLoad(from)
@@ -1191,7 +1191,7 @@ p3 = await getBuffer(get.url_audio)
 Lexxy.sendMessage(from, p3, audio)
 break
 case 'playmp4':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Judul nya Mana Kak?')
 bo = args.join(" ")
@@ -1206,7 +1206,7 @@ sticLoad(from)
 Lexxy.sendMessage(from, mp4, video)
 break
 case 'playmp3':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Judul nya Mana Kak?')
 bo = args.join(" ")
@@ -1224,7 +1224,7 @@ case 'owner':
 sendKontak(from, `${owner}`, `${ownerName}`)
 break
 case 'ytmp4':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Link nya Mana Kak?')
 ini_link = args.join(" ")
@@ -1239,7 +1239,7 @@ sticLoad(from)
 Lexxy.sendMessage(from, res, video)
 break
 case 'ytmp3':
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Link nya Mana Kak?')
 ini_link = args.join(" ")
@@ -1276,7 +1276,7 @@ reply(`*GROUP BERHASIL DI BUKA ADMIN ${pushname}*`);
 Lexxy.groupSettingChange(from, GroupSettingChange.messageSend, false);
 break; 
 case "tiktok":
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 ttg = fs.readFileSync('./gambar/logo/tiktok.jpg')
 res_nya = body.slice(8)
@@ -1290,7 +1290,7 @@ sendButLoc(from, tt1, tt2, ttg, but)
 break
 
 case "tt3":
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length < 1) return reply('Link Nya Mana Kak?')
 ini_link = body.slice(5)
@@ -1301,7 +1301,7 @@ Lexxy.sendMessage(from, ini, audio)
 break
 
 case "tt4":
-if (!isPremier)return reply(mess.premier)
+
 if (isBanned)return sticBanned(from)
 if (args.length < 1) return reply('Link Nya Mana Kak?')
 ini_link = body.slice(5)
@@ -1341,5 +1341,6 @@ console.log('Error : %s', color(e, 'red'))
 }
 
 
-	
-    
+
+    
+
